@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "allowJs": true,
+    "types": [
+      "vitest",
+      "vite/client",
+      "vue/ref-macros",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-component-preview/client",
+      "vite-plugin-vue-layouts/client",
+      "vite-plugin-pwa/client",
+      "unplugin-vue-macros/macros-global",
+      "element-plus/global",
+      "node",
+      "vite-plugin-vue-layouts/client"
+    ],
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "skipLibCheck": true
+  },
+  "vueCompilerOptions": {
+    "target": 3
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
+}
