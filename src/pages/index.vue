@@ -54,11 +54,6 @@ async function startProcess(e: any) {
 
 async function stopProcess(e: any) {
 	const newP = await processStore.stopProcess(e);
-	const ongoingPM = document.getElementById('ongoing_process')
-
-	//@ts-ignore
-	if (ongoingPM) ongoingPM.showModal()
-
 	await processStore.getProcess();
 	const dialogM = document.getElementById('new_process')
 	if (dialogM) {
