@@ -16,6 +16,7 @@
                         <div class="badge badge-accent">Weight</div>
                         <div class="flex-1 text-right">{{ currentProcess?.weight }}</div>
                     </div>
+                    {{ isValid }}
                 </div>
                 <div>
                     <Timer :seconds="stopwatch.seconds" :minutes="stopwatch.minutes" :hours="stopwatch.hours" />
@@ -51,7 +52,8 @@ const { currentProcess } = storeToRefs(processStore)
 const isValid = computed(() => !!currentProcess.value && currentProcess.value.stopped !== true)
 
 const stopwatchOffset = new Date();
-stopwatchOffset.setSeconds(0)
+const secondsToAdd = currentProcess.value && currentProcess.value.createdAt ? new Date(currentProcess.value.createdAt).getSeconds() : 0
+stopwatchOffset.setSeconds(secondsToAdd)
 const stopwatch = useStopwatch(stopwatchOffset.getSeconds(), false);
 const emits = defineEmits(['stop_process'])
 const polling = ref<any>(null)
@@ -62,18 +64,22 @@ function stopProcess() {
 }
 
 //@ts-ignore
-watch(() => currentProcess, () => {
+watch(() => isValid, () => {
     const ongoingPM = document.getElementById('ongoing_process')
-    if (!!isValid) {
+    console.log('vvlvid', isValid.value)
+    if (!isValid.value) {
+        stopwatch.reset(stopwatchOffset.getSeconds(), false);
+        currentProcess.value = null
+        if (ongoingPM) {
+            //@ts-ignore
+            ongoingPM.close()
+        }
+    } else {
         //@ts-ignore
         if (ongoingPM) ongoingPM.showModal()
         stopwatch.start()
-        polling.value = setInterval(async () => await processStore.getAProcess(currentProcess.value?.pid), 1000)
-    } else {
-        stopwatch.reset(stopwatchOffset.getSeconds(), false);
-        currentProcess.value = null
-        //@ts-ignore
-        ongoingPM.close()
+
     }
-}, { deep: true })
+}, { deep: true, immediate: true })
+
 </script>
