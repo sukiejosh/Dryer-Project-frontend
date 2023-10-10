@@ -10,6 +10,7 @@ declare module 'vue' {
     Analytics: typeof import('./components/analytics.vue')['default']
     BaseHeader: typeof import('./components/layouts/BaseHeader.vue')['default']
     BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
+    Digits: typeof import('./components/Digits.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
@@ -34,9 +35,14 @@ declare module 'vue' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Logos: typeof import('./components/Logos.vue')['default']
+    Navbar: typeof import('./components/navbar.vue')['default']
+    NewProcess: typeof import('./components/new-process.vue')['default']
+    OngoingProcess: typeof import('./components/ongoing-process.vue')['default']
+    ProcessList: typeof import('./components/process-list.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Stats: typeof import('./components/stats.vue')['default']
     Stats2: typeof import('./components/stats2.vue')['default']
+    Timer: typeof import('./components/Timer.vue')['default']
   }
 }

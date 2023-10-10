@@ -7,15 +7,6 @@ import { defineConfig } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 
 
-import {
-  presetAttributify,
-  presetIcons,
-  presetUno,
-  transformerDirectives,
-  transformerVariantGroup,
-} from 'unocss'
-import Unocss from 'unocss/vite'
-
 import Pages from 'vite-plugin-pages'
 
 const pathSrc = path.resolve(__dirname, 'src')
@@ -72,20 +63,6 @@ export default defineConfig({
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
-    Unocss({
-      presets: [
-        presetUno(),
-        presetAttributify(),
-        presetIcons({
-          scale: 1.2,
-          warn: true,
-        }),
-      ],
-      transformers: [
-        transformerDirectives(),
-        transformerVariantGroup(),
-      ]
-    }),
     Pages({
       extensions: ['vue', 'md'],
     }),
