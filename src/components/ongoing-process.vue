@@ -1,7 +1,7 @@
 <template>
     <dialog id="ongoing_process" class="modal">
         <div class="modal-box">
-            <div class="font-bold text-2xl pb-5">Process Inprogress</div>
+            <div class="font-bold text-2xl pb-5">Process In-Progress</div>
             <div class="flex flex-col w-full space-y-3">
                 <div class="flex flex-col space-y-4 py-5">
                     <div class="flex w-full space-x-5">
@@ -16,7 +16,6 @@
                         <div class="badge badge-accent">Weight</div>
                         <div class="flex-1 text-right">{{ currentProcess?.weight }}</div>
                     </div>
-                    {{ isValid }}
                 </div>
                 <div>
                     <Timer :seconds="stopwatch.seconds" :minutes="stopwatch.minutes" :hours="stopwatch.hours" />
