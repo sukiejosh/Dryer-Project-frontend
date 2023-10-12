@@ -81,8 +81,25 @@ export const useProcessStore = defineStore('process', {
             }
         },
 
+        async getStatus() {
+            try {
+                const result = await fetcher(`/status`, {})
+                console.log('server id', result)
+                if (!result) {
+                    console.log('system status not found')
+                    return false
+                }
+                const { data, error } = result
+                if (error == true) return false
+                return data.available
+            } catch (error) {
+                console.error(error)
+            }
+        },
+
 
         async stopProcess(id: string) {
+            if (!id) return
             try {
                 const result = await fetcher(`/process/${id}`, {
                     method: 'PATCH',
