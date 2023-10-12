@@ -106,9 +106,15 @@
 		emits("start_process", form);
 	}
 
-	onMounted(async () => {
+	const checkServerStatus = async () => {
 		serverStatus.value = await processStore.getStatus();
 
 		console.log("System status", serverStatus.value);
+
+		setTimeout(checkServerStatus, 1000);
+	};
+
+	onMounted(async () => {
+		await checkServerStatus();
 	});
 </script>
