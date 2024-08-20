@@ -35,7 +35,7 @@ app.component('EasyDataTable', Vue3EasyDataTable);
 app.use(router)
 
 // Add this when into a TypeScript codebase
-declare module '@vue/runtime-core' {
+declare module 'vue' {
     interface ComponentCustomProperties {
         $apexcharts: typeof ApexCharts;
     }
